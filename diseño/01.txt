@@ -1,0 +1,11 @@
+1) RNC: 101605812
+2) Nombre: GRUPO MEDICO UNIDO S A
+3) Nombre Comercioal: GRUPO MEDICO UNIDO
+4) Actividad Economica: SERVICIOS RELACIONADOS CON LA
+5) Calle: DUARTE
+6) Numero: 25
+7) Ciudad: SAN FRANCISCO (CENTRO URBANO)
+8) Telefono: 5881717
+9) Fecha de Registro: 21/12/1992
+10) Estado: ACTIVO
+11) Regimen de Pago: NORMAL
