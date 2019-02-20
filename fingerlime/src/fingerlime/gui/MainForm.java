@@ -17,6 +17,7 @@ public class MainForm extends javax.swing.JFrame {
      */
     public MainForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -172,10 +173,13 @@ public class MainForm extends javax.swing.JFrame {
         panelTituloIconos.setPreferredSize(new java.awt.Dimension(1000, 35));
         panelTituloIconos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(57, 105, 138));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/home_24.png"))); // NOI18N
         jLabel3.setText("Inicio");
+        jLabel3.setToolTipText("");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         panelTituloIconos.add(jLabel3);
 
         panelCentral.add(panelTituloIconos, java.awt.BorderLayout.PAGE_START);
