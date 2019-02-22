@@ -5,6 +5,9 @@
  */
 package fingerlime.gui;
 
+import fingerlime.gui.contribuyentes.FrmContribuyentes;
+import fingerlime.gui.form606.Frm606;
+
 
 /**
  *
@@ -48,6 +51,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FingerLime");
         setMinimumSize(new java.awt.Dimension(374, 250));
         setPreferredSize(new java.awt.Dimension(865, 535));
 
@@ -55,7 +59,7 @@ public class MainForm extends javax.swing.JFrame {
 
         panelSuperior.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         panelSuperior.setPreferredSize(new java.awt.Dimension(0, 60));
-        panelSuperior.setLayout(new java.awt.GridLayout());
+        panelSuperior.setLayout(new java.awt.GridLayout(1, 0));
 
         panelTItulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
         panelTItulo.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
@@ -106,6 +110,11 @@ public class MainForm extends javax.swing.JFrame {
         btnContribuyentes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnContribuyentes.setIconTextGap(5);
         btnContribuyentes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnContribuyentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContribuyentesActionPerformed(evt);
+            }
+        });
         btn608.add(btnContribuyentes);
 
         btn606.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/expensive_32.png"))); // NOI18N
@@ -117,6 +126,11 @@ public class MainForm extends javax.swing.JFrame {
         btn606.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn606.setIconTextGap(5);
         btn606.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn606.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn606ActionPerformed(evt);
+            }
+        });
         btn608.add(btn606);
 
         btn607.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/sale_32.png"))); // NOI18N
@@ -194,6 +208,16 @@ public class MainForm extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnContribuyentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContribuyentesActionPerformed
+        FrmContribuyentes frm = new FrmContribuyentes();
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnContribuyentesActionPerformed
+
+    private void btn606ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn606ActionPerformed
+        Frm606 frm = new Frm606();
+        frm.setVisible(true);
+    }//GEN-LAST:event_btn606ActionPerformed
 
    
 
