@@ -6,6 +6,13 @@
 package fingerlime.gui.form606;
 
 import fingerlime.gui.contribuyentes.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,6 +37,7 @@ public class FrmEditor606 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fchArchivo = new javax.swing.JFileChooser();
         panelPrincipal = new javax.swing.JPanel();
         panelSuperior = new javax.swing.JPanel();
         panelTitulo = new javax.swing.JPanel();
@@ -54,7 +62,7 @@ public class FrmEditor606 extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Contribuyentes");
+        setTitle("FingerLime");
 
         panelPrincipal.setLayout(new java.awt.BorderLayout());
 
@@ -80,6 +88,11 @@ public class FrmEditor606 extends javax.swing.JFrame {
 
         btnCargarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/import_16.png"))); // NOI18N
         btnCargarArchivo.setText("Importar");
+        btnCargarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarArchivoActionPerformed(evt);
+            }
+        });
         panelBotones.add(btnCargarArchivo);
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/export_16.png"))); // NOI18N
@@ -99,6 +112,7 @@ public class FrmEditor606 extends javax.swing.JFrame {
 
         panelPrincipal.add(panelSuperior, java.awt.BorderLayout.PAGE_START);
 
+        panelCentral.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2));
         panelCentral.setLayout(new java.awt.BorderLayout());
 
         panelList.setLayout(new java.awt.BorderLayout());
@@ -155,7 +169,7 @@ public class FrmEditor606 extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                         .addComponent(jButton3)))
                 .addContainerGap())
         );
@@ -197,10 +211,29 @@ public class FrmEditor606 extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    private void btnCargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarArchivoActionPerformed
+        fchArchivo.showOpenDialog(this);
+        File f = fchArchivo.getSelectedFile();
+        try {
+            BufferedReader b = new BufferedReader(new FileReader(f));
+            String line = "";
+            while((line = b.readLine()) != null){
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FrmEditor606.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(FrmEditor606.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+    }//GEN-LAST:event_btnCargarArchivoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarArchivo;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JFileChooser fchArchivo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

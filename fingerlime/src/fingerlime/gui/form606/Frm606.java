@@ -46,7 +46,7 @@ public class Frm606 extends javax.swing.JFrame {
         btnNuevo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Contribuyentes");
+        setTitle("FingerLime");
 
         panelPrincipal.setLayout(new java.awt.BorderLayout());
 

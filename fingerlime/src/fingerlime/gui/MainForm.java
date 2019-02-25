@@ -40,8 +40,8 @@ public class MainForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
+        panelInicio = new javax.swing.JPanel();
         panelIconos = new javax.swing.JPanel();
-        btn608 = new javax.swing.JToolBar();
         btnContribuyentes = new javax.swing.JButton();
         btn606 = new javax.swing.JButton();
         btn607 = new javax.swing.JButton();
@@ -49,6 +49,8 @@ public class MainForm extends javax.swing.JFrame {
         btnAjustes = new javax.swing.JButton();
         panelTituloIconos = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        panelDetalle = new javax.swing.JPanel();
+        lblDetalle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FingerLime");
@@ -95,93 +97,98 @@ public class MainForm extends javax.swing.JFrame {
         panelCentral.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panelCentral.setLayout(new java.awt.BorderLayout());
 
-        panelIconos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        panelIconos.setPreferredSize(new java.awt.Dimension(1000, 200));
+        panelInicio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        panelInicio.setPreferredSize(new java.awt.Dimension(1000, 200));
+        panelInicio.setLayout(new javax.swing.BoxLayout(panelInicio, javax.swing.BoxLayout.LINE_AXIS));
 
-        btn608.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btn608.setFloatable(false);
-        btn608.setRollover(true);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT);
+        flowLayout1.setAlignOnBaseline(true);
+        panelIconos.setLayout(flowLayout1);
 
         btnContribuyentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/group_32.png"))); // NOI18N
-        btnContribuyentes.setText("Contribuyentes");
         btnContribuyentes.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         btnContribuyentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnContribuyentes.setFocusable(false);
+        btnContribuyentes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnContribuyentes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnContribuyentes.setIconTextGap(5);
         btnContribuyentes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnContribuyentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnContribuyentesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnContribuyentesMouseExited(evt);
+            }
+        });
         btnContribuyentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContribuyentesActionPerformed(evt);
             }
         });
-        btn608.add(btnContribuyentes);
+        panelIconos.add(btnContribuyentes);
 
         btn606.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/expensive_32.png"))); // NOI18N
-        btn606.setText("Remisiónes CyG (606)");
-        btn606.setToolTipText("Remisiones de Costos y Gastos");
+        btn606.setToolTipText("Remisiones de Costos y Gastos (606)");
         btn606.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         btn606.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn606.setFocusable(false);
+        btn606.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn606.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn606.setIconTextGap(5);
         btn606.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn606.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn606MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn606MouseExited(evt);
+            }
+        });
         btn606.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn606ActionPerformed(evt);
             }
         });
-        btn608.add(btn606);
+        panelIconos.add(btn606);
 
         btn607.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/sale_32.png"))); // NOI18N
-        btn607.setText("Remisiones VyO (607)");
-        btn607.setToolTipText("Remisiones de Ventas y Operaciones");
+        btn607.setToolTipText("Remisiones de Ventas y Operaciones (607)");
         btn607.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         btn607.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn607.setFocusable(false);
+        btn607.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn607.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn607.setIconTextGap(5);
         btn607.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn608.add(btn607);
+        panelIconos.add(btn607);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/shopping-cart-cancel_32png.png"))); // NOI18N
-        jButton1.setText("Comp. Anulados (608)");
-        jButton1.setToolTipText("Remisiones de Comprobantes Anulados");
+        jButton1.setToolTipText("Remisiones de Comprobantes Anulados (608)");
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
+        jButton1.setHideActionText(true);
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setIconTextGap(5);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn608.add(jButton1);
+        panelIconos.add(jButton1);
 
         btnAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/settings_32.png"))); // NOI18N
-        btnAjustes.setText("Configuraciones");
+        btnAjustes.setToolTipText("Configuracion");
         btnAjustes.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         btnAjustes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAjustes.setFocusable(false);
+        btnAjustes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAjustes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAjustes.setIconTextGap(5);
         btnAjustes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn608.add(btnAjustes);
+        panelIconos.add(btnAjustes);
 
-        javax.swing.GroupLayout panelIconosLayout = new javax.swing.GroupLayout(panelIconos);
-        panelIconos.setLayout(panelIconosLayout);
-        panelIconosLayout.setHorizontalGroup(
-            panelIconosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelIconosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn608, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE))
-        );
-        panelIconosLayout.setVerticalGroup(
-            panelIconosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelIconosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn608, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(290, Short.MAX_VALUE))
-        );
+        panelInicio.add(panelIconos);
 
-        panelCentral.add(panelIconos, java.awt.BorderLayout.CENTER);
+        panelCentral.add(panelInicio, java.awt.BorderLayout.CENTER);
 
         panelTituloIconos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(57, 105, 138)));
         panelTituloIconos.setPreferredSize(new java.awt.Dimension(1000, 35));
@@ -197,6 +204,15 @@ public class MainForm extends javax.swing.JFrame {
         panelTituloIconos.add(jLabel3);
 
         panelCentral.add(panelTituloIconos, java.awt.BorderLayout.PAGE_START);
+
+        panelDetalle.setPreferredSize(new java.awt.Dimension(849, 35));
+
+        lblDetalle.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        lblDetalle.setForeground(new java.awt.Color(57, 105, 138));
+        lblDetalle.setText("Detalle");
+        panelDetalle.add(lblDetalle);
+
+        panelCentral.add(panelDetalle, java.awt.BorderLayout.PAGE_END);
 
         PanelPrincipal.add(panelCentral, java.awt.BorderLayout.CENTER);
 
@@ -219,13 +235,28 @@ public class MainForm extends javax.swing.JFrame {
         frm.setVisible(true);
     }//GEN-LAST:event_btn606ActionPerformed
 
+    private void btnContribuyentesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContribuyentesMouseEntered
+        lblDetalle.setText("Contribuyentes");
+    }//GEN-LAST:event_btnContribuyentesMouseEntered
+
+    private void btnContribuyentesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContribuyentesMouseExited
+        lblDetalle.setText("");
+    }//GEN-LAST:event_btnContribuyentesMouseExited
+
+    private void btn606MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn606MouseEntered
+        lblDetalle.setText("Remisiones de Costos y Gastos (606)");
+    }//GEN-LAST:event_btn606MouseEntered
+
+    private void btn606MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn606MouseExited
+        lblDetalle.setText("");
+    }//GEN-LAST:event_btn606MouseExited
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton btn606;
     private javax.swing.JButton btn607;
-    private javax.swing.JToolBar btn608;
     private javax.swing.JButton btnAjustes;
     private javax.swing.JButton btnContribuyentes;
     private javax.swing.JButton btnSalir;
@@ -233,9 +264,12 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblDetalle;
     private javax.swing.JPanel panelBotonesTitulo;
     private javax.swing.JPanel panelCentral;
+    private javax.swing.JPanel panelDetalle;
     private javax.swing.JPanel panelIconos;
+    private javax.swing.JPanel panelInicio;
     private javax.swing.JPanel panelSuperior;
     private javax.swing.JPanel panelTItulo;
     private javax.swing.JPanel panelTituloIconos;
