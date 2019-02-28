@@ -6,25 +6,33 @@
 package fingerlime.gui.form606;
 
 import fingerlime.gui.contribuyentes.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import fingerlime.models.Formato606;
+import fingerlime.models.Item606;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author victor
  */
-public class FrmEditor606 extends javax.swing.JFrame {
+public class FrmEditor606 extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmPrincipal
      */
     public FrmEditor606() {
 //        this.setLocationRelativeTo(this);
+        this.setModal(true);
         initComponents();
     }
 
@@ -50,16 +58,18 @@ public class FrmEditor606 extends javax.swing.JFrame {
         panelCentral = new javax.swing.JPanel();
         panelList = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableRegistros = new javax.swing.JTable();
         panelTareas = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombreContribuyente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtRNC = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        comboAnio = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        comboMes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FingerLime");
@@ -117,18 +127,15 @@ public class FrmEditor606 extends javax.swing.JFrame {
 
         panelList.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableRegistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Proveedor", "RNC", "NFC", "Monto Total"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableRegistros);
 
         panelList.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -139,12 +146,18 @@ public class FrmEditor606 extends javax.swing.JFrame {
 
         jLabel2.setText("RNC");
 
-        jLabel3.setText("Periodo");
+        jLabel3.setText(" Año");
 
         jButton1.setText("Explorar");
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/add_16.png"))); // NOI18N
         jButton3.setText("Agregar Registro");
+
+        comboAnio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2018", "2017", "2016", "2015", "2014" }));
+
+        jLabel4.setText("Mes");
+
+        comboMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
         javax.swing.GroupLayout panelTareasLayout = new javax.swing.GroupLayout(panelTareas);
         panelTareas.setLayout(panelTareasLayout);
@@ -154,43 +167,46 @@ public class FrmEditor606 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelTareasLayout.createSequentialGroup()
-                        .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(panelTareasLayout.createSequentialGroup()
-                                .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelTareasLayout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreContribuyente, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addComponent(jLabel1)
+                    .addGroup(panelTareasLayout.createSequentialGroup()
+                        .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRNC, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelTareasLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(66, 66, 66)
+                                .addComponent(jLabel4))
+                            .addGroup(panelTareasLayout.createSequentialGroup()
+                                .addComponent(comboAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboMes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         panelTareasLayout.setVerticalGroup(
             panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTareasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelTareasLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(3, 3, 3)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelTareasLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(3, 3, 3)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(3, 3, 3)
+                .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRNC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(3, 3, 3)
                 .addGroup(panelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreContribuyente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -212,27 +228,44 @@ public class FrmEditor606 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnCargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarArchivoActionPerformed
+        Formato606 f606 = new Formato606();
         fchArchivo.showOpenDialog(this);
+        List<String> lineas = new ArrayList<>();
         File f = fchArchivo.getSelectedFile();
-        try {
-            BufferedReader b = new BufferedReader(new FileReader(f));
-            String line = "";
-            while((line = b.readLine()) != null){
-                System.out.println(line);
+        
+        if (f != null) {
+            try {
+                BufferedReader bfReader = new BufferedReader(new FileReader(f));
+                String linea = "";
+                while ((linea = bfReader.readLine()) != null) {
+                    lineas.add(linea);
+                }
+                bfReader.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FrmEditor606.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(FrmEditor606.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FrmEditor606.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(FrmEditor606.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        f606.cargarDesdeArregloTxt(lineas);
+        this.txtRNC.setText(f606.getRnc());
+        this.txtNombreContribuyente.setText(f606.getNombreContribuyente());
+        JOptionPane.showMessageDialog(this, f606.getRegistros().get(0).getMontoFacturadoBienes());
+        
+        DefaultTableModel model = ( DefaultTableModel)this.tableRegistros.getModel();
+        for(Item606 registro : f606.getRegistros()){
+            model .addRow(new Object[]{registro.getNombreProveedor(),registro.getRncProveedor(),registro.getNfc(),registro.getTotalMontoFacturado()});
         }
         
-       
+        this.tableRegistros.setModel(model);
     }//GEN-LAST:event_btnCargarArchivoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarArchivo;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JComboBox<String> comboAnio;
+    private javax.swing.JComboBox<String> comboMes;
     private javax.swing.JFileChooser fchArchivo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -240,11 +273,8 @@ public class FrmEditor606 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelCentral;
@@ -253,5 +283,8 @@ public class FrmEditor606 extends javax.swing.JFrame {
     private javax.swing.JPanel panelSuperior;
     private javax.swing.JPanel panelTareas;
     private javax.swing.JPanel panelTitulo;
+    private javax.swing.JTable tableRegistros;
+    private javax.swing.JTextField txtNombreContribuyente;
+    private javax.swing.JTextField txtRNC;
     // End of variables declaration//GEN-END:variables
 }
