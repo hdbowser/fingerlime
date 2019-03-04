@@ -5,8 +5,9 @@
  */
 package fingerlime.gui;
 
+import fingerlime.gui.ajustes.FrmAjustes;
 import fingerlime.gui.contribuyentes.FrmContribuyentes;
-import fingerlime.gui.form606.Frm606;
+import fingerlime.gui.reporteCyG.FrmReporteCyG;
 
 
 /**
@@ -184,6 +185,19 @@ public class MainForm extends javax.swing.JFrame {
         btnAjustes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAjustes.setIconTextGap(5);
         btnAjustes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAjustesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAjustesMouseExited(evt);
+            }
+        });
+        btnAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjustesActionPerformed(evt);
+            }
+        });
         panelIconos.add(btnAjustes);
 
         panelInicio.add(panelIconos);
@@ -231,7 +245,7 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnContribuyentesActionPerformed
 
     private void btn606ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn606ActionPerformed
-        Frm606 frm = new Frm606();
+        FrmReporteCyG frm = new FrmReporteCyG();
         frm.setVisible(true);
     }//GEN-LAST:event_btn606ActionPerformed
 
@@ -250,6 +264,19 @@ public class MainForm extends javax.swing.JFrame {
     private void btn606MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn606MouseExited
         lblDetalle.setText("");
     }//GEN-LAST:event_btn606MouseExited
+
+    private void btnAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjustesActionPerformed
+        FrmAjustes frm = new FrmAjustes(this,true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnAjustesActionPerformed
+
+    private void btnAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseEntered
+        lblDetalle.setText("Ajustes");
+    }//GEN-LAST:event_btnAjustesMouseEntered
+
+    private void btnAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseExited
+        lblDetalle.setText("");
+    }//GEN-LAST:event_btnAjustesMouseExited
 
    
 

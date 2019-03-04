@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fingerlime.gui.form606;
+package fingerlime.gui.reporteCyG;
 
 import fingerlime.gui.contribuyentes.*;
 
@@ -11,12 +11,12 @@ import fingerlime.gui.contribuyentes.*;
  *
  * @author victor
  */
-public class Frm606 extends javax.swing.JFrame {
+public class FrmReporteCyG extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPrincipal
      */
-    public Frm606() {
+    public FrmReporteCyG() {
 //        this.setLocationRelativeTo(this);
         initComponents();
     }
@@ -132,7 +132,7 @@ public class Frm606 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        FrmEditor606 frm = new FrmEditor606();
+        FrmEditorReporteCyG frm = new FrmEditorReporteCyG();
         frm.setVisible(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 

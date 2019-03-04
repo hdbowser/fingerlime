@@ -13,7 +13,7 @@ import fingerlime.core.FormatoCampo;
  *
  * @author victor
  */
-public class Formato606 {
+public class ReporteCyG {
 
     private int id;
     private String codigo;
@@ -25,9 +25,9 @@ public class Formato606 {
     /**/
     private String NombreContribuyente;
 
-    List<Item606> registros;
+    List<RegistroReporteCyG> registros;
     
-    public Formato606(){
+    public ReporteCyG(){
         registros = new ArrayList<>();
         this.NombreContribuyente = "Contribuyente Generico";
         
@@ -47,7 +47,7 @@ public class Formato606 {
         for (int i = 1; i < _arreglo.size(); i++) {
             String[] registro = _arreglo.get(i).split("\\|");
             if(registro.length == 23){
-                Item606 item = new Item606();
+                RegistroReporteCyG item = new RegistroReporteCyG();
                 item.setNumRegistro(i);
                 item.setRncProveedor(registro[0]);
                 item.setTipoId(Integer.parseInt(registro[1]));
@@ -130,7 +130,7 @@ public class Formato606 {
         return cantidadRegistros;
     }
 
-    public List<Item606> getRegistros() {
+    public List<RegistroReporteCyG> getRegistros() {
         return registros;
     }
 

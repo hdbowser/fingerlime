@@ -9,7 +9,7 @@ package fingerlime.models;
  *
  * @author victor
  */
-public class Item606 {
+public class RegistroReporteCyG {
 
     private int idRemisionConstGast;
     private int numRegistro;
@@ -40,7 +40,7 @@ public class Item606 {
     /**/
     private String nombreProveedor;
     
-    public Item606(){
+    public RegistroReporteCyG(){
         this.nombreProveedor = "Proveedor Generico";
     }
     

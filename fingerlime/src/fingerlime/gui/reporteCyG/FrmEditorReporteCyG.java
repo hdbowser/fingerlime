@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fingerlime.gui.form606;
+package fingerlime.gui.reporteCyG;
 
 import fingerlime.gui.contribuyentes.*;
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import fingerlime.models.Formato606;
-import fingerlime.models.Item606;
+import fingerlime.models.ReporteCyG;
+import fingerlime.models.RegistroReporteCyG;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,12 +25,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author victor
  */
-public class FrmEditor606 extends javax.swing.JDialog {
+public class FrmEditorReporteCyG extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmPrincipal
      */
-    public FrmEditor606() {
+    public FrmEditorReporteCyG() {
 //        this.setLocationRelativeTo(this);
         this.setModal(true);
         initComponents();
@@ -228,7 +228,7 @@ public class FrmEditor606 extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnCargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarArchivoActionPerformed
-        Formato606 f606 = new Formato606();
+        ReporteCyG f606 = new ReporteCyG();
         fchArchivo.showOpenDialog(this);
         List<String> lineas = new ArrayList<>();
         File f = fchArchivo.getSelectedFile();
@@ -242,9 +242,9 @@ public class FrmEditor606 extends javax.swing.JDialog {
                 }
                 bfReader.close();
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(FrmEditor606.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FrmEditorReporteCyG.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(FrmEditor606.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FrmEditorReporteCyG.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         f606.cargarDesdeArregloTxt(lineas);
@@ -253,7 +253,7 @@ public class FrmEditor606 extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, f606.getRegistros().get(0).getMontoFacturadoBienes());
         
         DefaultTableModel model = ( DefaultTableModel)this.tableRegistros.getModel();
-        for(Item606 registro : f606.getRegistros()){
+        for(RegistroReporteCyG registro : f606.getRegistros()){
             model .addRow(new Object[]{registro.getNombreProveedor(),registro.getRncProveedor(),registro.getNfc(),registro.getTotalMontoFacturado()});
         }
         
