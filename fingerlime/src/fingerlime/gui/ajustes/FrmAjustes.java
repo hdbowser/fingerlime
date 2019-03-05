@@ -5,6 +5,12 @@
  */
 package fingerlime.gui.ajustes;
 
+import fingerlime.core.FormatoTxtContribuyente;
+import fingerlime.models.ContribuyenteRaw;
+import fingerlime.models.EjemploTask;
+import java.io.File;
+import java.util.List;
+
 /**
  *
  * @author victor
@@ -19,6 +25,8 @@ public class FrmAjustes extends javax.swing.JDialog {
         initComponents();
     }
 
+    public File archivoContribuyentes;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +36,7 @@ public class FrmAjustes extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fileChooser = new javax.swing.JFileChooser();
         panelSuperior = new javax.swing.JPanel();
         panelTtulo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -43,6 +52,11 @@ public class FrmAjustes extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         panelDatos = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        txtNombreArchivoContribuyentes = new javax.swing.JTextField();
+        btnExplorarArchivoTXT = new javax.swing.JButton();
+        pbgImportacionDatos = new javax.swing.JProgressBar();
+        btnIniciarImportacion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,6 +78,11 @@ public class FrmAjustes extends javax.swing.JDialog {
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fingerlime/gui/images/close_16.png"))); // NOI18N
         btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
         panelAcciones.add(btnCerrar);
 
         panelSuperior.add(panelAcciones);
@@ -115,15 +134,72 @@ public class FrmAjustes extends javax.swing.JDialog {
 
         tabPanel.addTab("Usuarios", panelUsuarios);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(57, 105, 138)), "Importar datos desde TXT", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+
+        txtNombreArchivoContribuyentes.setEditable(false);
+        txtNombreArchivoContribuyentes.setBackground(new java.awt.Color(241, 243, 244));
+
+        btnExplorarArchivoTXT.setText("Examinar...");
+        btnExplorarArchivoTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExplorarArchivoTXTActionPerformed(evt);
+            }
+        });
+
+        pbgImportacionDatos.setForeground(new java.awt.Color(57, 105, 138));
+        pbgImportacionDatos.setStringPainted(true);
+
+        btnIniciarImportacion.setText("Iniciar");
+        btnIniciarImportacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarImportacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtNombreArchivoContribuyentes, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExplorarArchivoTXT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIniciarImportacion))
+                    .addComponent(pbgImportacionDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombreArchivoContribuyentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExplorarArchivoTXT)
+                    .addComponent(btnIniciarImportacion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pbgImportacionDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
         panelDatos.setLayout(panelDatosLayout);
         panelDatosLayout.setHorizontalGroup(
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(panelDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelDatosLayout.setVerticalGroup(
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 503, Short.MAX_VALUE)
+            .addGroup(panelDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(321, Short.MAX_VALUE))
         );
 
         tabPanel.addTab("Datos", panelDatos);
@@ -139,53 +215,37 @@ public class FrmAjustes extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBusquedaUsuariosActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAjustes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAjustes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAjustes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAjustes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnExplorarArchivoTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExplorarArchivoTXTActionPerformed
+        this.fileChooser.showOpenDialog(this);
+        this.archivoContribuyentes = fileChooser.getSelectedFile();
+        if (archivoContribuyentes != null) {
+            this.txtNombreArchivoContribuyentes.setText(archivoContribuyentes.getPath());
         }
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_btnExplorarArchivoTXTActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FrmAjustes dialog = new FrmAjustes(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void btnIniciarImportacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarImportacionActionPerformed
+        this.getpbgImportacionDatos().setIndeterminate(true);
+        this.pbgImportacionDatos.setString("Cargando archivo");
+        Runnable task = new EjemploTask(this);
+        Thread t = new Thread(task);
+        t.start();
+    }//GEN-LAST:event_btnIniciarImportacionActionPerformed
 
+public javax.swing.JProgressBar getpbgImportacionDatos(){
+    return this.pbgImportacionDatos;
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarUsuarios;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnExplorarArchivoTXT;
+    private javax.swing.JButton btnIniciarImportacion;
+    private javax.swing.JFileChooser fileChooser;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel paneTablaUsuarios;
@@ -196,7 +256,9 @@ public class FrmAjustes extends javax.swing.JDialog {
     private javax.swing.JPanel panelTopUsuarios;
     private javax.swing.JPanel panelTtulo;
     private javax.swing.JPanel panelUsuarios;
+    private javax.swing.JProgressBar pbgImportacionDatos;
     private javax.swing.JTabbedPane tabPanel;
     private javax.swing.JTextField txtBusquedaUsuarios;
+    private javax.swing.JTextField txtNombreArchivoContribuyentes;
     // End of variables declaration//GEN-END:variables
 }
