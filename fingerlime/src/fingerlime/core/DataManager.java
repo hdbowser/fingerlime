@@ -3,7 +3,7 @@ package fingerlime.core;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.PreparedStatement;
+//import java.sql.PreparedStatement;
 
 /**
  *
@@ -21,14 +21,6 @@ public class DataManager {
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex2) {
-                System.out.println(ex2.getMessage());
-            }
         }
         return conn;
     }

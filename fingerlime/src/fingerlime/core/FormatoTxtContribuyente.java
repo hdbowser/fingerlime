@@ -8,9 +8,12 @@ package fingerlime.core;
 import java.io.File;
 import fingerlime.models.ContribuyenteRaw;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 //import fingerlime.models.Contribuyente;
@@ -31,7 +34,8 @@ public class FormatoTxtContribuyente {
         List<String> filas = new ArrayList<>();
         if (this.archivo != null) {
             try {
-                BufferedReader reader = new BufferedReader(new FileReader(this.archivo));
+                Charset charSt = Charset.forName("ISO-8859-1");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(this.archivo),charSt));
                 String linea = "";
                 while ((linea = reader.readLine()) != null) {
                     filas.add(linea);

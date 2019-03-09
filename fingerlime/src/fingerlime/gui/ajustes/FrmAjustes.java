@@ -8,6 +8,7 @@ package fingerlime.gui.ajustes;
 import fingerlime.core.FormatoTxtContribuyente;
 import fingerlime.models.ContribuyenteRaw;
 import fingerlime.models.EjemploTask;
+import fingerlime.tasks.TaskImportarContribuyentes;
 import java.io.File;
 import java.util.List;
 
@@ -230,7 +231,7 @@ public class FrmAjustes extends javax.swing.JDialog {
     private void btnIniciarImportacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarImportacionActionPerformed
         this.getpbgImportacionDatos().setIndeterminate(true);
         this.pbgImportacionDatos.setString("Cargando archivo");
-        Runnable task = new EjemploTask(this);
+        Runnable task = new TaskImportarContribuyentes(this);
         Thread t = new Thread(task);
         t.start();
     }//GEN-LAST:event_btnIniciarImportacionActionPerformed
@@ -238,6 +239,7 @@ public class FrmAjustes extends javax.swing.JDialog {
 public javax.swing.JProgressBar getpbgImportacionDatos(){
     return this.pbgImportacionDatos;
 }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarUsuarios;
     private javax.swing.JButton btnCerrar;
